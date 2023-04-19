@@ -1,9 +1,11 @@
 <?php
-session_start(); ob_start(); ob_clean();
+session_start();
+ob_start();
+ob_clean();
 
-    // if($_GET['sha'] == sha1($_GET['token']))
-    // {
-    // }else { header('location: index.php'); }
+// if($_GET['sha'] == sha1($_GET['token']))
+// {
+// }else { header('location: index.php'); }
 
 $client = $_GET['token'] ?? 0;
 
@@ -17,7 +19,7 @@ $client = $_GET['token'] ?? 0;
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <?php include('link.php') ?>
-        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
 
     <script src="../assets/js/select.min.js"></script>
     <link rel="stylesheet" href="../assets/css/selectb.css">
@@ -26,7 +28,7 @@ $client = $_GET['token'] ?? 0;
     <title>User Profile</title>
 
 </head>
- 
+
 <body>
     <!-- Wrapper -->
     <div id="db-wrapper">
@@ -58,13 +60,13 @@ $client = $_GET['token'] ?? 0;
                                     </ol>
                                 </nav>
                             </div>
-                            <?php if($client > 0) { ?>
-                                <?php if($me['role'] > 0) { ?>
+                            <?php if ($client > 0) { ?>
+                                <?php if ($me['role'] > 0) { ?>
                                     <div>
                                         <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCardModal">
                                             Add Card For <?= getClientName($client) ?></a>
                                     </div>
-                                <?php } ?> 
+                                <?php } ?>
                             <?php } ?>
                         </div>
                     </div>
@@ -80,20 +82,21 @@ $client = $_GET['token'] ?? 0;
                                     <form>
                                         <select name="selectUser" class="form-control  " onchange="submit()">
                                             <option>...Select Client</option>
-                                            <?php $clients = $db->query("SELECT * FROM clients "); while($row = mysqli_fetch_array($clients)){ ?>
-                                                <option value="<?= $row['id'] ?>"> <?= ucwords($row['title'].' '.$row['firstname'].' '.$row['lastname']) ?> <?= $row['id'] ?></option>
+                                            <?php $clients = $db->query("SELECT id,title,firstname,lastname FROM clients ORDER BY updated_at LIMIT 100 ");
+                                            while ($row = mysqli_fetch_array($clients)) { ?>
+                                                <option value="<?= $row['id'] ?>"> <?= ucwords($row['title'] . ' ' . $row['firstname'] . ' ' . $row['lastname']) ?> <?= $row['id'] ?></option>
                                             <?php } ?>
                                         </select>
                                     </form>
                                 </div>
 
-                                <?php if($client > 0) { ?>
-                                    <div class="row">                                    
+                                <?php if ($client > 0) { ?>
+                                    <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-md-12 col-12">
                                             <!-- Card -->
                                             <div class="card mb-4">
                                                 <!-- Card body -->
-                                                
+
                                                 <div class="card-header align-items-center card-header-height  d-flex justify-content-between align-items-center">
                                                     <div>
                                                         <h4 class="mb-0">Profile Information</h4>
@@ -101,10 +104,10 @@ $client = $_GET['token'] ?? 0;
                                                     </div>
                                                 </div>
                                                 <div class="card-body">
-                                                
+
                                                     <div class="text-center">
                                                         <div class="position-relative">
-                                                            <img src="../assets/images/avatar/avatar-12.jpg" class="rounded-circle avatar-xl mb-3" alt="" />
+                                                            <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" class="rounded-circle avatar-xl mb-3" alt="" />
                                                             <a href="#" class="position-absolute mt-10 ms-n5">
                                                                 <span class="status bg-success"></span>
                                                             </a>
@@ -132,29 +135,29 @@ $client = $_GET['token'] ?? 0;
                                                         </div>
                                                         <div>
                                                             <span>Date Added:</span>
-                                                            <span> <?= $data['created_at']; ?> </span>
+                                                            <span> <?= formatDate($data['created_at']); ?> </span>
                                                         </div>
                                                     </div>
-                                                 
+
                                                 </div>
-                                                   <div class="card-footer">
-                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#editUserModal" class="btn btn-primary">Edit Profile</button>
-                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#allCardModal" class="btn btn-secondary">See All Card</button>
-                                                    </div>
+                                                <div class="card-footer">
+                                                    <button type="button" data-bs-toggle="modal" data-bs-target="#editUserModal" class="btn btn-primary">Edit Profile</button>
+                                                    <button type="button" data-bs-toggle="modal" data-bs-target="#allCardModal" class="btn btn-secondary">See All Card</button>
+                                                </div>
 
                                             </div>
 
                                             <?php $cards = $db->query("SELECT * FROM cards WHERE client_id=$client AND status>0 ORDER BY id DESC "); ?>
 
                                             <!-- Card -->
-                                            <?php if(mysqli_num_rows($cards) > 0){ ?>
+                                            <?php if (mysqli_num_rows($cards) > 0) { ?>
 
                                                 <div class="card mb-4">
                                                     <div class="card-header align-items-center">
-                                                            <h4 class="mb-0">Glass Orders</h4>
+                                                        <h4 class="mb-0">Glass Orders</h4>
                                                     </div>
                                                     <div class="card-body">
-                                                    
+
                                                         <div class="table-responsive border-0 overflow-y-hidden">
                                                             <table class="table mb-0 text-nowrap">
                                                                 <thead class="table-light">
@@ -169,7 +172,8 @@ $client = $_GET['token'] ?? 0;
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <?php $i = 1; while ($row = mysqli_fetch_array($cards)) { ?>
+                                                                    <?php $i = 1;
+                                                                    while ($row = mysqli_fetch_array($cards)) { ?>
                                                                         <tr>
                                                                             <td class="align-middle"><?= $i++ ?></td>
                                                                             <td class="align-middle">
@@ -181,20 +185,23 @@ $client = $_GET['token'] ?? 0;
                                                                             </td>
                                                                             <td class="align-middle">
 
-                                                                                <?php $rem = $row['remark']; if($rem == 0) { ?>
+                                                                                <?php $rem = $row['remark'];
+                                                                                if ($rem == 0) { ?>
                                                                                     <form method="POST">
                                                                                         <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                                                                                        <select class="form-control" name="postOrderUpdate" style="height: 1px" onchange="submit()" >
+                                                                                        <select class="form-control" name="postOrderUpdate" style="height: 1px" onchange="submit()">
                                                                                             <option selected disabled="">Select Remark</option>
                                                                                             <option value="2">BF</option>
                                                                                             <option value="3">Easy</option>
                                                                                             <option value="1">Special Order</option>
-                                                                                            
+
                                                                                         </select>
                                                                                     </form>
-                                                                                <?php }else{ echo cardRemark($row['remark']); }?>
+                                                                                <?php } else {
+                                                                                    echo cardRemark($row['remark']);
+                                                                                } ?>
                                                                             </td>
-                                                                            <td class="align-middle"><?= $row['created_at']?></td>
+                                                                            <td class="align-middle"><?= $row['created_at'] ?></td>
                                                                             <td class="align-middle"><?= cardRemark($row['remark'], 234) ?></td>
                                                                         </tr>
                                                                     <?php } ?>
@@ -218,13 +225,13 @@ $client = $_GET['token'] ?? 0;
                                                 <div class="p-0 printable " id="displaySingleBody">
                                                     <div class="card-body"><em>Loading Cards ...</em></div>
                                                 </div>
-                                                   
+
                                             </div>
                                         </div>
                                     </div>
                                 <?php }  ?>
                             </div>
-                        
+
                         </div>
                     </div>
                 </div>
@@ -249,37 +256,37 @@ $client = $_GET['token'] ?? 0;
                     <form method="POST" class="row">
                         <div class="col-lg-6 mb-3 mb-2 ">
                             <label class="form-label">First Name<span class="text-danger">*</span></label>
-                            <input type="text" name="firstname"  class="form-control" placeholder="First Name" value="<?= $data['firstname']; ?>"required>
+                            <input type="text" name="firstname" class="form-control" placeholder="First Name" value="<?= $data['firstname']; ?>" required>
                         </div>
                         <div class="col-lg-6 mb-3 mb-2 ">
-                            <label class="form-label" >Last Name<span class="text-danger">*</span></label>
+                            <label class="form-label">Last Name<span class="text-danger">*</span></label>
                             <input type="text" name="lastname" class="form-control" placeholder="Enter last name" value="<?= $data['lastname']; ?>" required>
                         </div>
 
                         <div class="col-lg-6 mb-3 mb-2 ">
-                            <label class="form-label" >Email</label>
+                            <label class="form-label">Email</label>
                             <input type="email" name="email" class="form-control" placeholder="Enter email address" value="<?= $data['email']; ?>">
                         </div>
 
                         <div class="col-lg-6 mb-3 mb-2 ">
-                            <label class="form-label" >Phone</label>
+                            <label class="form-label">Phone</label>
                             <input type="text" name="phone" class="form-control" placeholder="Enter phone number" value="<?= $data['phone']; ?>">
                         </div>
 
                         <div class="col-lg-6 mb-3 mb-2 ">
-                            <label class="form-label" >Age<span class="text-danger">*</span></label>
+                            <label class="form-label">Age<span class="text-danger">*</span></label>
                             <input type="number" name="age" class="form-control" placeholder="Enter age" value="<?= $data['age']; ?>" required>
                         </div>
 
                         <div class="col-lg-6 mb-3 mb-2 ">
-                            <label class="form-label" >Title<span class="text-danger">*</span></label>
+                            <label class="form-label">Title<span class="text-danger">*</span></label>
                             <input type="text" name="title" class="form-control" placeholder="Enter Title" value="<?= $data['title']; ?>" required>
                             <input type="hidden" name="id" value="<?= $data['id']; ?>">
                         </div>
 
 
                         <div class="col-lg-6 mb-3 mb-2 ">
-                            <label class="form-label" >Gender<span class="text-danger">*</span></label>
+                            <label class="form-label">Gender<span class="text-danger">*</span></label>
                             <select class="form-control" name="gender">
                                 <option><?= $data['gender']; ?></option>
                                 <option>Male</option>
@@ -318,11 +325,10 @@ $client = $_GET['token'] ?? 0;
                 <div class="modal-body">
                     <form method="POST" class="row">
 
-                    <!--     <div class="col-md-12 form-group">
-                            <label>Card ID</label>
-                            <input type="number" name="card_id" class="form-control mb-3" placeholder="Enter card Id" required>
-                            
-                        </div> -->
+                        <div class="col-md-3 offset-9 form-group">
+                            <label>Apointment Date</label>
+                            <input type="date" name="apt_date" class="form-control mb-3" required>
+                        </div>
                         <div class="col-md-12 form-group">
                             <input type="hidden" name="client" value="<?= $client ?>">
                             <label>Complaint</label>
@@ -338,19 +344,25 @@ $client = $_GET['token'] ?? 0;
                         <div class="col-md-6 form-group">
                             <label>Visual Activity Distance (OD) (Without Glasses) </label>
                             <select class="form-control mb-3" name="visualAcuityWithoutGlassesDistanceOd">
-                                <option value="" >.. Select VAD||OD</option>
+                                <option value="">.. Select VAD||OD</option>
 
-                                <option>NLP</option> <option>HM +ve</option>
+                                <option>NLP</option>
+                                <option>HM +ve</option>
                                 <option>HM -ve</option>
                                 <option>cf@3mtrs</option>
                                 <option>cf@2mtrs</option>
                                 <option>cf@1mtrs</option>
-                                <option>cfcf</option> <option>6/60</option>
-                                <option>6/36</option> <option>6/24</option>
-                                <option>6/18</option> <option>6/12</option>
-                                <option>6/9</option> <option>6/6</option>
-                                <option>6/5</option> <option>6/4</option>
-                            </select> 
+                                <option>cfcf</option>
+                                <option>6/60</option>
+                                <option>6/36</option>
+                                <option>6/24</option>
+                                <option>6/18</option>
+                                <option>6/12</option>
+                                <option>6/9</option>
+                                <option>6/6</option>
+                                <option>6/5</option>
+                                <option>6/4</option>
+                            </select>
                         </div>
 
                         <div class="col-md-6 form-group">
@@ -417,17 +429,23 @@ $client = $_GET['token'] ?? 0;
                             <select class="form-control mb-3" name="visualAcuityWithGlassesDistanceOd">
                                 <option value="">.. Select VAD||OD</option>
 
-                                <option>NLP</option> <option>HM +ve</option>
+                                <option>NLP</option>
+                                <option>HM +ve</option>
                                 <option>HM -ve</option>
                                 <option>cf@3mtrs</option>
                                 <option>cf@2mtrs</option>
                                 <option>cf@1mtrs</option>
-                                <option>cfcf</option> <option>6/60</option>
-                                <option>6/36</option> <option>6/24</option>
-                                <option>6/18</option> <option>6/12</option>
-                                <option>6/9</option> <option>6/6</option>
-                                <option>6/5</option> <option>6/4</option>
-                            </select> 
+                                <option>cfcf</option>
+                                <option>6/60</option>
+                                <option>6/36</option>
+                                <option>6/24</option>
+                                <option>6/18</option>
+                                <option>6/12</option>
+                                <option>6/9</option>
+                                <option>6/6</option>
+                                <option>6/5</option>
+                                <option>6/4</option>
+                            </select>
                         </div>
 
                         <div class="col-md-6 form-group">
@@ -548,8 +566,7 @@ $client = $_GET['token'] ?? 0;
 
                         <div class="col-md-12 form-group">
                             <label>Treatment Plan</label>
-                            <textarea class="form-control mb-3" rows="2" name="treatmentPlan"
-                                placeholder="Enter Treatment Plans"></textarea>
+                            <textarea class="form-control mb-3" rows="2" name="treatmentPlan" placeholder="Enter Treatment Plans"></textarea>
                             <input type="checkbox" class="mb-3" name="status" value=1><label for="glasses"> Check if glasses is required</label>
                         </div>
 
@@ -600,7 +617,7 @@ $client = $_GET['token'] ?? 0;
                 </div>
                 <div class="modal-body">
                     <div class="row" id="allCardBody">
-                        
+
                     </div>
                 </div>
             </div>
@@ -649,31 +666,30 @@ $client = $_GET['token'] ?? 0;
     <script src="../assets/js/theme.min.js"></script>
 
     <script type="text/javascript">
-        function BrWindow(theURL,winName,features) { //v2.0
-          
-            window.open(theURL,winName,features);
-          
+        function BrWindow(theURL, winName, features) { //v2.0
+
+            window.open(theURL, winName, features);
+
         }
 
 
 
-        $(function () {
+        $(function() {
             ppop = document.getElementById('displaySingleBody');
             //ppop.print();
             // $('#addCardModal').modal('show');
 
-            
 
 
 
-            function doYourWork()
-            {
+
+            function doYourWork() {
                 id = "<?= $client ?>"
 
                 $.ajax({
                     method: 'GET',
                     url: `../api.php?pickCards=${id}`
-                }).done(function (res) {
+                }).done(function(res) {
                     res = JSON.parse(res);
                     body = document.getElementById('displaySingleBody');
                     body.innerHTML = ``;
@@ -681,8 +697,8 @@ $client = $_GET['token'] ?? 0;
                     son.classList.add('card-body');
                     body.append(son);
                     console.log(res);
-                    if(res.length > 0) {
-                        
+                    if (res.length > 0) {
+
 
                         lastCard = res[0];
                         inner = doMyPlacing(lastCard.data);
@@ -693,7 +709,7 @@ $client = $_GET['token'] ?? 0;
                         allBody.innerHTML = ``;
 
                         res.map((cd) => {
-                        
+
                             allSon = document.createElement('div')
                             allSon.setAttribute('class', 'col-lg-6 card-body border');
                             allBody.append(allSon);
@@ -702,14 +718,14 @@ $client = $_GET['token'] ?? 0;
                             allSon.innerHTML = innerAll;
                         });
 
-                        
-                    }else {
+
+                    } else {
                         inner = `<em class="text-danger">No card has been uploaded so far</em>`
                     }
 
                     son.innerHTML = inner
 
-                    
+
                 }).fail(function() {
                     alert('Syncronization failed check your connection');
                 })
@@ -719,8 +735,7 @@ $client = $_GET['token'] ?? 0;
 
 
 
-            function doMyPlacing(data)
-            {
+            function doMyPlacing(data) {
                 user = '<?= $me['role'] ?>'
                 dataString = JSON.stringify(data)
                 bottomBtn = (user > 0) ? `<form class="hideWhilePrint" method="POST">
@@ -733,7 +748,7 @@ $client = $_GET['token'] ?? 0;
                         
                         </form>
                     </div>
-                ` : `` ;
+                ` : ``;
                 body = `<div class="">
 
                     <div class="d-flex justify-content-between border-bottom py-2 ">
@@ -743,7 +758,7 @@ $client = $_GET['token'] ?? 0;
                         </div>
                         <div>
                             <b>Date:</b>
-                            <span> ${data.created_at} </span>
+                            <span> ${data.apt_date} </span>
                         </div>
                     </div>
 
@@ -894,12 +909,14 @@ $client = $_GET['token'] ?? 0;
 
 
 
-            function doMyEditForPlacing(data)
-            {
+            function doMyEditForPlacing(data) {
 
                 body = `<form method="POST" class="row">
 
-               
+                    <div class="col-md-3  offset-md-9 form-group">
+                        <label>Apointment Date</label>
+                        <input type="date" name="apt_date" value="${data.apt_date}" class="form-control mb-3" required>
+                    </div>
                     <div class="col-md-12 form-group">
 
                         <label>Complaint</label>
@@ -1142,9 +1159,9 @@ $client = $_GET['token'] ?? 0;
                 return body;
             }
 
-            
+
             doYourWork();
-            setInterval(function () {
+            setInterval(function() {
                 console.log('friend')
                 doYourWork();
             }, 5000);

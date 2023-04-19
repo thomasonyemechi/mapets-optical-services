@@ -60,7 +60,7 @@ function getClientName($id)
     global $db;
     $sql = $db->query("SELECT * FROM clients WHERE id=$id ");
     $row = mysqli_fetch_array($sql);
-    return ucwords($row['title'].' '.$row['lastname'].' '.$row['firstname']);
+    return @ucwords($row['title'].' '.$row['lastname'].' '.$row['firstname']);
 }
 
 
@@ -184,4 +184,13 @@ function createThumbnail($sourceImagePath, $destImagePath, $thumbWidth = 50)
     }
     imagedestroy($sourceImage);
     imagedestroy($thumbnail);
+}
+
+function formatDate($string, $op = '')
+{
+    if($op == 'f') {
+        return date('j M Y h:i a',strtotime($string));
+    }else {
+        return date('j M Y',strtotime($string));
+    }
 }

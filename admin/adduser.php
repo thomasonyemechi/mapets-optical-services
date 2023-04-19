@@ -14,7 +14,7 @@ ob_clean();
     <?php include('link.php') ?>
 
     <title>Add Users</title>
-</head>
+</head>1
 
 <body>
     <!-- Wrapper -->
@@ -56,14 +56,12 @@ ob_clean();
                 </div>
 
                 <?php 
-                    $sql = $db->query("SELECT * FROM clients ORDER BY id DESC LIMIT 20 ");
+                    $sql = $db->query("SELECT * FROM clients ORDER BY id DESC limit 100 ");
                 ?>
 
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
-                        <!-- Card -->
                         <div class="card mb-4">
-                            <!-- Card header -->
                             <div class="card-header border-bottom-0">
                                 <h3 class="card-title">Recently Added</h3>
                             </div>
@@ -92,7 +90,7 @@ ob_clean();
                                             <tr>
                                                 <td class="align-middle"><?= $i++ ?></td>
                                                 <td class="align-middle">
-                                                    <a href="#" class="text-inherit">
+                                                      <a href="userprofile.php?<?= sha1($row['id']) . '&&token=' . $row['id']  ?>" class="text-inherit">
                                                         <h5 class="mb-0 text-primary-hover">
                                                             <?= ucwords($row['title'].' '.$row['lastname']. ' '.$row['firstname']) ?>
                                                         </h5>
@@ -244,7 +242,6 @@ ob_clean();
 
     <script type="text/javascript">
         $(function () {
-            $('#addUserModal').modal('show');
 
             setTimeout(function() {
                 $("#refresh").fadeOut(3000);

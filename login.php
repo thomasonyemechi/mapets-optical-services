@@ -1,5 +1,7 @@
 <?php
-session_start();ob_start();ob_clean();
+session_start();
+ob_start();
+ob_clean();
 include('lib/connect.inc.php') ?>
 
 <!DOCTYPE html>
@@ -49,12 +51,15 @@ include('lib/connect.inc.php') ?>
           <!-- Card body -->
           <div class="card-body p-6">
             <div class="mb-4">
-              <h1 class="mb-1 fw-bold">Sign in</h1>
+              <h1 class="mb-1 fw-bold">Sign in
+              </h1>
             </div>
-            <?php if(isset($report)){ echo Alert(); } 
+            <?php if (isset($report)) {
+              echo Alert();
+            }
 
-              //echo password_hash('Mapets', PASSWORD_DEFAULT)
-             ?>
+            //echo password_hash('Mapets', PASSWORD_DEFAULT)
+            ?>
             <!-- Form -->
 
             <form method="POST">

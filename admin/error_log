@@ -1,0 +1,189 @@
+[17-Apr-2023 09:33:32 Africa/Lagos] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/myonline/mapets.myonlineclinic.ng/lib/constant.php on line 10
+[17-Apr-2023 09:33:32 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 09:33:32 Africa/Lagos] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:46
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(46): mysqli->query('SELECT * FROM u...')
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 46
+[17-Apr-2023 09:37:47 Africa/Lagos] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/myonline/mapets.myonlineclinic.ng/lib/constant.php on line 10
+[17-Apr-2023 09:37:47 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 09:37:47 Africa/Lagos] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:46
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(46): mysqli->query('SELECT * FROM u...')
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 46
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 259
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 263
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 268
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 273
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 278
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 283
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 284
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 291
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 299
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 773
+[17-Apr-2023 09:40:58 Africa/Lagos] PHP Warning:  Trying to access array offset on value of type null in /home/myonline/mapets.myonlineclinic.ng/admin/userprofile.php on line 779
+[17-Apr-2023 09:44:20 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 09:44:20 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 09:48:06 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 09:48:06 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 09:48:09 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 09:48:09 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 10:06:22 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 10:06:22 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 10:06:24 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 10:06:24 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 11:18:08 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 11:18:08 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 11:18:08 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 11:18:08 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 12:18:31 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 12:18:31 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 12:18:32 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 12:18:32 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 12:18:49 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 12:18:49 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 12:18:49 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 12:18:49 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 13:19:19 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 13:19:19 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 13:19:47 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 13:19:47 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 21:43:43 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 21:43:43 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[17-Apr-2023 21:43:44 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[17-Apr-2023 21:43:44 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[18-Apr-2023 09:08:06 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[18-Apr-2023 09:08:06 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[18-Apr-2023 15:01:58 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[18-Apr-2023 15:01:58 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[19-Apr-2023 02:17:55 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[19-Apr-2023 02:17:55 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[19-Apr-2023 02:42:14 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[19-Apr-2023 02:42:14 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47
+[19-Apr-2023 04:09:59 Africa/Lagos] PHP Warning:  Undefined array key "mapets" in /home/myonline/mapets.myonlineclinic.ng/admin/link.php on line 39
+[19-Apr-2023 04:09:59 Africa/Lagos] PHP Fatal error:  Uncaught TypeError: mysqli_fetch_array(): Argument #1 ($result) must be of type mysqli_result, bool given in /home/myonline/mapets.myonlineclinic.ng/lib/function.php:47
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/function.php(47): mysqli_fetch_array(false)
+#1 /home/myonline/mapets.myonlineclinic.ng/admin/link.php(39): getUser(NULL)
+#2 /home/myonline/mapets.myonlineclinic.ng/admin/index.php(12): include('/home/myonline/...')
+#3 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/function.php on line 47

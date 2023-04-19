@@ -8,12 +8,12 @@
         <div class="ms-lg-3 d-none d-md-none d-lg-block">
             <!-- Form -->
 
-          <!--   <form class="d-flex align-items-center">
+          <form class="d-flex align-items-center"  action="search.php" >
                 <span class="position-absolute ps-3 search-icon">
                     <i class="fe fe-search"></i>
                 </span>
-                <input type="search" class="form-control form-control-sm ps-6" placeholder="Search Entire Dashboard" />
-            </form> -->
+                <input type="search" name="q" class="form-control form-control-sm ps-6" placeholder="Search User" />
+            </form>
         </div>
         <!--Navbar nav -->
         <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">

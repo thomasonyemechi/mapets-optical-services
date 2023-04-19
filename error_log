@@ -1,0 +1,22 @@
+[17-Apr-2023 09:33:33 Africa/Lagos] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/myonline/mapets.myonlineclinic.ng/lib/constant.php on line 10
+[17-Apr-2023 09:34:12 Africa/Lagos] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/myonline/mapets.myonlineclinic.ng/lib/constant.php on line 10
+[17-Apr-2023 09:34:12 Africa/Lagos] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/myonline/mapets.myonlineclinic.ng/lib/class.php:219
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/class.php(219): mysqli->query('SELECT * FROM u...')
+#1 /home/myonline/mapets.myonlineclinic.ng/lib/class.php(12): Mapets->login()
+#2 /home/myonline/mapets.myonlineclinic.ng/lib/class.php(233): Mapets->__construct()
+#3 /home/myonline/mapets.myonlineclinic.ng/lib/connect.inc.php(3): include('/home/myonline/...')
+#4 /home/myonline/mapets.myonlineclinic.ng/login.php(5): include('/home/myonline/...')
+#5 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/class.php on line 219
+[17-Apr-2023 09:37:47 Africa/Lagos] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/myonline/mapets.myonlineclinic.ng/lib/constant.php on line 10
+[17-Apr-2023 09:38:03 Africa/Lagos] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/myonline/mapets.myonlineclinic.ng/lib/constant.php on line 10
+[17-Apr-2023 09:38:03 Africa/Lagos] PHP Fatal error:  Uncaught Error: mysqli object is already closed in /home/myonline/mapets.myonlineclinic.ng/lib/class.php:219
+Stack trace:
+#0 /home/myonline/mapets.myonlineclinic.ng/lib/class.php(219): mysqli->query('SELECT * FROM u...')
+#1 /home/myonline/mapets.myonlineclinic.ng/lib/class.php(12): Mapets->login()
+#2 /home/myonline/mapets.myonlineclinic.ng/lib/class.php(233): Mapets->__construct()
+#3 /home/myonline/mapets.myonlineclinic.ng/lib/connect.inc.php(3): include('/home/myonline/...')
+#4 /home/myonline/mapets.myonlineclinic.ng/login.php(5): include('/home/myonline/...')
+#5 {main}
+  thrown in /home/myonline/mapets.myonlineclinic.ng/lib/class.php on line 219

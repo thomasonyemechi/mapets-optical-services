@@ -54,6 +54,7 @@ class Mapets
         $id = $_POST['id'];
 
         $card_id = $_POST['id'];
+        $date = $_POST['apt_date'];
         $complaint = addslashes($_POST['complaint']);
         $history = addslashes($_POST['history']);
         $visualAcuityWithoutGlassesDistanceOd = addslashes($_POST['visualAcuityWithoutGlassesDistanceOd']);
@@ -79,7 +80,7 @@ class Mapets
         $status = $_POST['status'] ?? 0;
 
 
-        $db->query("UPDATE cards SET card_id='$card_id', complaint='$complaint', history='$history', visualAcuityWithoutGlassesDistanceOd='$visualAcuityWithoutGlassesDistanceOd', visualAcuityWithoutGlassesDistanceOs='$visualAcuityWithoutGlassesDistanceOs', visualAcuityWithoutGlassesNearOd='$visualAcuityWithoutGlassesNearOd', visualAcuityWithoutGlassesNearOs='$visualAcuityWithoutGlassesNearOs', visualAcuityWithGlassesDistanceOd='$visualAcuityWithGlassesDistanceOd', visualAcuityWithGlassesDistanceOs='$visualAcuityWithGlassesDistanceOs', visualAcuityWithGlassesNearOd='$visualAcuityWithGlassesNearOd', visualAcuityWithGlassesNearOs='$visualAcuityWithGlassesNearOs', externalExaminationOd='$externalExaminationOd', externalExaminationOs='$externalExaminationOs', iopTimeOd='$iopTimeOd', iopTimeOs='$iopTimeOs', posteriorSegmentOd='$posteriorSegmentOd', posteriorSegmentOs='$posteriorSegmentOs', subjectiveRefractionDistanceOd='$subjectiveRefractionDistanceOd', subjectiveRefractionDistanceOs='$subjectiveRefractionDistanceOs', subjectiveRefractionNearOd='$subjectiveRefractionNearOd', subjectiveRefractionNearOs='$subjectiveRefractionNearOs', diagnosis='$diagnosis', treatmentPlan='$treatmentPlan', status='$status' WHERE id=$id
+        $db->query("UPDATE cards SET card_id='$card_id', apt_date='$date', complaint='$complaint', history='$history', visualAcuityWithoutGlassesDistanceOd='$visualAcuityWithoutGlassesDistanceOd', visualAcuityWithoutGlassesDistanceOs='$visualAcuityWithoutGlassesDistanceOs', visualAcuityWithoutGlassesNearOd='$visualAcuityWithoutGlassesNearOd', visualAcuityWithoutGlassesNearOs='$visualAcuityWithoutGlassesNearOs', visualAcuityWithGlassesDistanceOd='$visualAcuityWithGlassesDistanceOd', visualAcuityWithGlassesDistanceOs='$visualAcuityWithGlassesDistanceOs', visualAcuityWithGlassesNearOd='$visualAcuityWithGlassesNearOd', visualAcuityWithGlassesNearOs='$visualAcuityWithGlassesNearOs', externalExaminationOd='$externalExaminationOd', externalExaminationOs='$externalExaminationOs', iopTimeOd='$iopTimeOd', iopTimeOs='$iopTimeOs', posteriorSegmentOd='$posteriorSegmentOd', posteriorSegmentOs='$posteriorSegmentOs', subjectiveRefractionDistanceOd='$subjectiveRefractionDistanceOd', subjectiveRefractionDistanceOs='$subjectiveRefractionDistanceOs', subjectiveRefractionNearOd='$subjectiveRefractionNearOd', subjectiveRefractionNearOs='$subjectiveRefractionNearOs', diagnosis='$diagnosis', treatmentPlan='$treatmentPlan', status='$status' WHERE id=$id
         ")or die('bad service');
 
 
@@ -123,6 +124,7 @@ class Mapets
         $client_id = $_POST['client'];
 
         $card_id = $client_id;
+        $date = $_POST['apt_date'];
         $complaint = addslashes($_POST['complaint']);
         $history = addslashes($_POST['history']);
         $visualAcuityWithoutGlassesDistanceOd = addslashes($_POST['visualAcuityWithoutGlassesDistanceOd']);
@@ -148,9 +150,9 @@ class Mapets
         $status = $_POST['status'] ?? 0;
 
 
-        $db->query("INSERT INTO cards(client_id, card_id, complaint, history, visualAcuityWithoutGlassesDistanceOd, visualAcuityWithoutGlassesDistanceOs, visualAcuityWithoutGlassesNearOd, visualAcuityWithoutGlassesNearOs, visualAcuityWithGlassesDistanceOd, visualAcuityWithGlassesDistanceOs, visualAcuityWithGlassesNearOd, visualAcuityWithGlassesNearOs, externalExaminationOd, externalExaminationOs, iopTimeOd, iopTimeOs, posteriorSegmentOd, posteriorSegmentOs, subjectiveRefractionDistanceOd, subjectiveRefractionDistanceOs, subjectiveRefractionNearOd, subjectiveRefractionNearOs, diagnosis, treatmentPlan, status, created_at)
+        $db->query("INSERT INTO cards(client_id, card_id, apt_date, complaint, history, visualAcuityWithoutGlassesDistanceOd, visualAcuityWithoutGlassesDistanceOs, visualAcuityWithoutGlassesNearOd, visualAcuityWithoutGlassesNearOs, visualAcuityWithGlassesDistanceOd, visualAcuityWithGlassesDistanceOs, visualAcuityWithGlassesNearOd, visualAcuityWithGlassesNearOs, externalExaminationOd, externalExaminationOs, iopTimeOd, iopTimeOs, posteriorSegmentOd, posteriorSegmentOs, subjectiveRefractionDistanceOd, subjectiveRefractionDistanceOs, subjectiveRefractionNearOd, subjectiveRefractionNearOs, diagnosis, treatmentPlan, status, created_at)
 
-            VALUES('$client_id', '$card_id', '$complaint', '$history', '$visualAcuityWithoutGlassesDistanceOd', '$visualAcuityWithoutGlassesDistanceOs', '$visualAcuityWithoutGlassesNearOd', '$visualAcuityWithoutGlassesNearOs', '$visualAcuityWithGlassesDistanceOd', '$visualAcuityWithGlassesDistanceOs', '$visualAcuityWithGlassesNearOd', '$visualAcuityWithGlassesNearOs', '$externalExaminationOd', '$externalExaminationOs', '$iopTimeOd', '$iopTimeOs', '$posteriorSegmentOd', '$posteriorSegmentOs', '$subjectiveRefractionDistanceOd', '$subjectiveRefractionDistanceOs', '$subjectiveRefractionNearOd', '$subjectiveRefractionNearOs', '$diagnosis', '$treatmentPlan', '$status', now() )
+            VALUES('$client_id', '$card_id', '$date', '$complaint', '$history', '$visualAcuityWithoutGlassesDistanceOd', '$visualAcuityWithoutGlassesDistanceOs', '$visualAcuityWithoutGlassesNearOd', '$visualAcuityWithoutGlassesNearOs', '$visualAcuityWithGlassesDistanceOd', '$visualAcuityWithGlassesDistanceOs', '$visualAcuityWithGlassesNearOd', '$visualAcuityWithGlassesNearOs', '$externalExaminationOd', '$externalExaminationOs', '$iopTimeOd', '$iopTimeOs', '$posteriorSegmentOd', '$posteriorSegmentOs', '$subjectiveRefractionDistanceOd', '$subjectiveRefractionDistanceOs', '$subjectiveRefractionNearOd', '$subjectiveRefractionNearOs', '$diagnosis', '$treatmentPlan', '$status', now() )
 
         ")or die('bad service');
 
