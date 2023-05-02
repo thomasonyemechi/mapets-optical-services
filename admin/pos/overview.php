@@ -1,62 +1,54 @@
 <?php
-session_start();ob_start();ob_clean();
+session_start();
+ob_start();
+ob_clean();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <?php include('link.php') ?>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-    <title>Dashboard</title>
+    <title>Sales Overview</title>
+
+
 </head>
 
+
+
 <body>
-    <!-- Wrapper -->
     <div id="db-wrapper">
-        <!-- navbar vertical -->
-        <!-- Sidebar -->
         <?php include('sidebar.php') ?>
-        <!-- Page Content -->
         <div id="page-content">
 
-            <?php include('header.php') ?>
-
-            <!-- Page Header -->
-            <!-- Container fluid -->
+            <?php include('../header.php') ?>
+            <?php if (isset($report)) {
+                echo Alert();
+            } ?>
             <div class="container-fluid p-4">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12">
-                        <div class="border-bottom pb-4 mb-4 d-md-flex justify-content-between align-items-center">
-                            <div class="mb-3 mb-md-0">
-                                <h1 class="mb-0 h2 fw-bold">Dashboard</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col-xl-3 col-lg-6 col-md-12 col-12">
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
                                     <div>
-                                        <span class="fs-6 text-uppercase fw-semi-bold">Clients</span>
+                                        <span class="fs-6 text-uppercase fw-semi-bold"> Sales </span>
                                     </div>
                                     <div>
                                         <span class="fe fe-shopping-bag fs-3 text-primary"></span>
                                     </div>
                                 </div>
                                 <h2 class="fw-bold mb-1">
-                                    <?php 
-                                        $sql = $db->query("SELECT * FROM clients ");
-                                        echo mysqli_num_rows($sql);
+                                    <?php
+                                    $sql = $db->query("SELECT * FROM sales_summary ");
+                                    echo mysqli_num_rows($sql);
                                     ?>
                                 </h2>
-                                <span class="text-success fw-semi-bold"><i class="fe fe-trending-up me-1"></i>20</span>
-                                <span class="ms-1 fw-medium">Add last 30 days</span>
                             </div>
                         </div>
                     </div>
@@ -67,23 +59,18 @@ session_start();ob_start();ob_clean();
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
                                     <div>
-                                        <span class="fs-6 text-uppercase fw-semi-bold">Cards</span>
+                                        <span class="fs-6 text-uppercase fw-semi-bold">Store Items</span>
                                     </div>
                                     <div>
                                         <span class=" fe fe-book-open fs-3 text-primary"></span>
                                     </div>
                                 </div>
                                 <h2 class="fw-bold mb-1">
-                                    <?php 
-                                        $sql = $db->query("SELECT * FROM cards ");
-                                        echo mysqli_num_rows($sql);
+                                    <?php
+                                    $sql = $db->query("SELECT * FROM items ");
+                                    echo mysqli_num_rows($sql);
                                     ?>
                                 </h2>
-                                <span class="text-danger fw-semi-bold"><?php 
-                                        $sql = $db->query("SELECT * FROM cards WHERE remark = 1 ");
-                                        echo mysqli_num_rows($sql);
-                                    ?></span>
-                                <span class="ms-1 fw-medium">Special Orders</span>
                             </div>
                         </div>
                     </div>
@@ -94,23 +81,18 @@ session_start();ob_start();ob_clean();
                             <div class="card-body">
                                 <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
                                     <div>
-                                        <span class="fs-6 text-uppercase fw-semi-bold">Glass Orders</span>
+                                        <span class="fs-6 text-uppercase fw-semi-bold">Sales Made</span>
                                     </div>
                                     <div>
-                                        <span class=" fe fe-users fs-3 text-primary"></span>
+                                        <span class=" fe fe-dollar-sign fs-3 text-primary"></span>
                                     </div>
                                 </div>
                                 <h2 class="fw-bold mb-1">
-                                    <?php 
-                                        $sql = $db->query("SELECT * FROM cards WHERE status > 0 ");
-                                        echo mysqli_num_rows($sql);
+                                <?php
+                                    $sql = $db->query("SELECT SUM(total) AS value_sum FROM sales_summary ");
+                                    echo money(mysqli_fetch_array($sql)['value_sum']);
                                     ?>
                                 </h2>
-                                <span class="text-success fw-semi-bold"><i class="fe fe-trending-up me-1"></i><?php 
-                                        $sql = $db->query("SELECT * FROM cards WHERE status > 0 AND remark > 0 ");
-                                        echo mysqli_num_rows($sql);
-                                    ?></span>
-                                <span class="ms-1 fw-medium"><a class="text-muted" href="completeglassorder.php">Completed Orders</a></span>
                             </div>
                         </div>
                     </div>
@@ -136,8 +118,8 @@ session_start();ob_start();ob_clean();
                         </div>
                     </div>
                 </div>
-                <?php 
-                    $sql = $db->query("SELECT * FROM clients ORDER BY id DESC LIMIT 20 ");
+                <?php
+                $sql = $db->query("SELECT * FROM clients ORDER BY id DESC LIMIT 20 ");
                 ?>
 
                 <div class="row">
@@ -164,16 +146,16 @@ session_start();ob_start();ob_clean();
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php 
-                                            $i  = 1;
-                                            while ($row = mysqli_fetch_array($sql)) { 
+                                        <?php
+                                        $i  = 1;
+                                        while ($row = mysqli_fetch_array($sql)) {
                                         ?>
                                             <tr>
                                                 <td class="align-middle"><?= $i++ ?></td>
                                                 <td class="align-middle">
                                                     <a href="userprofile.php?sha=<?= sha1($row['id']) ?>&&token=<?= $row['id'] ?>" class="text-inherit">
                                                         <h5 class="mb-0 text-primary-hover">
-                                                            <?= ucwords($row['title'].' '.$row['lastname']. ' '.$row['firstname']) ?>
+                                                            <?= ucwords($row['title'] . ' ' . $row['lastname'] . ' ' . $row['firstname']) ?>
                                                         </h5>
                                                     </a>
                                                 </td>
@@ -190,50 +172,59 @@ session_start();ob_start();ob_clean();
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
+
+
     <!-- Script -->
     <!-- Libs JS -->
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/libs/odometer/odometer.min.js"></script>
-    <script src="../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-    <script src="../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="../assets/libs/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
-    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="../assets/libs/quill/dist/quill.min.js"></script>
-    <script src="../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
-    <script src="../assets/libs/dragula/dist/dragula.min.js"></script>
-    <script src="../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
-    <script src="../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
-    <script src="../assets/libs/jQuery.print/jQuery.print.js"></script>
-    <script src="../assets/libs/prismjs/prism.js"></script>
-    <script src="../assets/libs/prismjs/components/prism-scss.min.js"></script>
-    <script src="../assets/libs/%40yaireo/tagify/dist/tagify.min.js"></script>
-    <script src="../assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
-    <script src="../assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
-    <script src="../assets/libs/typed.js/lib/typed.min.js"></script>
-    <script src="../assets/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>
-    <script src="../assets/libs/jsvectormap/dist/maps/world.js"></script>
-    <script src="../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/odometer/odometer.min.js"></script>
+    <script src="../../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <script src="../../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="../../assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="../../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+    <script src="../../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="../../assets/libs/quill/dist/quill.min.js"></script>
+    <script src="../../assets/libs/dragula/dist/dragula.min.js"></script>
+    <script src="../../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+    <script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="../../assets/libs/jQuery.print/jQuery.print.js"></script>
+    <script src="../../assets/libs/prismjs/prism.js"></script>
+    <script src="../../assets/libs/prismjs/components/prism-scss.min.js"></script>
+    <script src="../../assets/libs/%40yaireo/tagify/dist/tagify.min.js"></script>
+    <script src="../../assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="../../assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+    <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+    <script src="../../assets/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>
+    <script src="../../assets/libs/jsvectormap/dist/maps/world.js"></script>
+    <script src="../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
 
 
+    <script src="../../assets/js/theme.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+
+            setTimeout(function() {
+                $("#refresh").fadeOut(3000);
+            }, 3000);
 
 
-    <!-- clipboard -->
-    <script src="../cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+        })
+    </script>
 
-
-    <!-- Theme JS -->
-    <script src="../assets/js/theme.min.js"></script>
 </body>
 
 </html>

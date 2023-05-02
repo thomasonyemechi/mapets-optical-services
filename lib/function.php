@@ -19,6 +19,12 @@ function getCard($id)
 }
 
 
+function summary($sales_id) {
+    global $db;
+    $sql = $db->query("SELECT * FROM sales_summary WHERE id='$sales_id' ");
+    return mysqli_fetch_array($sql);
+}
+
 function cardRemark($sn, $opt=0)
 {
     $tp = ''; $val = '';
@@ -114,38 +120,15 @@ function valEmpty($field, $fname, $ct)
 
 function money($money)
 {
-    return '₦' . number_format($money);
+    return '₦ ' . number_format($money);
 }
 
 
-    // function upUnikexpress()
-    // {
-    //     global $db2, $report, $count;
-    //     ini_set('memory_limit', '3050M');
-    //     $title = $_POST['title'];
-    //     $id = $_POST['id'];
-    //     $photos = $_FILES['photos'];
-    //     $count = count($photos['name']);
-
-    //     for($i = 0; $i < $count; $i++){
-    //         $ext = pathinfo($photos['name'][$i], PATHINFO_EXTENSION);
-    //         $name = $title.'_' .time().rand(11111, 999999).'.'.$ext;
-    //         $name2 = 'thumb_'.$title.'_' .time().rand(11111, 999999).'.'.$ext;
-    //         $dest_path = '../assets/mockup/'.$name;
-    //         $dest_path2 = '../assets/mockup/'.$name2;
-
-    //         createThumbnail($photos['tmp_name'][$i], $dest_path2, 250);
-
-    //         //move_uploaded_file($image['tmp_name'], $dest_path);
-    //     }
-        
-
-    //     print_r($name);
-
-    //     exit();
-    // }
-
-
+function getItem($item_id) {
+    global $db;
+    $sql = $db->query("SELECT * FROM items where id='$item_id' ");
+    return mysqli_fetch_array($sql);
+}
 
 
 function createThumbnail($sourceImagePath, $destImagePath, $thumbWidth = 50)

@@ -17,6 +17,14 @@
                     <i class="nav-icon fe fe-home me-2"></i> Dashboard
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="pos/index.php" >
+                    <i class="nav-icon fe fe-shopping-bag me-2"></i> Point Of Sales
+                </a>
+            </li>
+
+
             <li class="nav-item">
                 <a class="nav-link" href="adduser.php">
                     <i class="nav-icon fe fe-user me-2"></i> Add User
@@ -28,7 +36,11 @@
                     <i class="nav-icon fe fe-user me-2"></i> Manage Users
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="searchcard.php">
+                    <i class="nav-icon fe fe-search me-2"></i> Today Cards
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="glassorders.php">
                     <i class="nav-icon fe fe-book me-2"></i> Glass (Pending)
