@@ -87,7 +87,7 @@ ob_clean();
                                         $sum = summary($item['sumary_id']);
                                     ?>
                                         <tr>
-                                            <td class="align-middle"><?= getItem($item['item_id'])['name'] ?> </td>
+                                            <td class="align-middle"><?= $item['item_name'] ?> </td>
                                             <td class="align-middle"><?= $item['quantity'] ?></td>
                                             <td class="align-middle"><?= money($item['price']) ?></td>
                                             <td class="align-middle"><?= money($item['price'] * $item['quantity']) ?></td>

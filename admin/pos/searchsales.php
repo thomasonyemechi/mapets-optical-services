@@ -12,7 +12,7 @@ ob_clean();
 
     <?php include('link.php') ?>
 
-    <title>Items </title>
+    <title>Search Sales </title>
 
     <style type="text/css">
         .search-result {
@@ -28,6 +28,9 @@ ob_clean();
 <body>
     <div id="db-wrapper">
         <?php include('sidebar.php') ?>
+        <?php
+        $today = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
+        ?>
         <div id="page-content">
 
             <?php include('../header.php') ?>
@@ -52,7 +55,7 @@ ob_clean();
                                 </nav>
                             </div>
                             <div>
-                                <!-- <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemsModal">Add Item</a> -->
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItemsModal">Add Item</a>
                             </div>
 
                         </div>
@@ -60,37 +63,70 @@ ob_clean();
                 </div>
 
 
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <form action="" method="get">
+                                    <div class="form-group">
+                                        <label for="">Select Date</label>
+                                        <input type="date" name="date" class="form-control" onchange="submit()">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
                 <?php
-                $sql = $db->query("SELECT * FROM items ORDER BY updated_at DESC LIMIT 150 ");
+                $sql = $db->query("SELECT * FROM sales_summary 
+                    where (created_at like '%$today%' 
+                    or updated_at like '%$today%' )  ");
                 ?>
+
 
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
                         <div class="card mt-3">
                             <div class="card-body">
-                                <h4 class="fw-bold"> <i class="fe fe-list"> </i> Items List</h4>
+                                <h4 class="fw-bold"> <i class="fe fe-list"> </i> Sales List (<?= $today ?>)</h4>
                                 <table class="table table-sm mt-2 table-striped ">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Type</th>
+                                        <th>Receipt</th>
+                                        <th>items</th>
+                                        <th></th>
+                                        <th>Total</th>
                                         <th>Created</th>
                                         <th></th>
                                     </tr>
 
                                     <?php
-                                    while ($item = mysqli_fetch_array($sql)) {
+                                    while ($sum = mysqli_fetch_array($sql)) {
                                     ?>
                                         <tr>
-                                            <td class="align-middle"> <?= $item['name'] ?> </td>
-                                            <td class="align-middle"><?= money($item['price']) ?></td>
-                                            <td class="align-middle"><?= $item['type'] ?></td>
+                                            <td class="align-middle"> #<?= $sum['id'] ?> </td>
+                                            <td colspan="2" class="align-middle">
+                                                <ul style="margin-bottom: 0px;" >
+                                                    <?php foreach (soldItems($sum['id']) as $item) { ?>
+
+                                                        <li>
+                                                         <?= $item['item_id']; ?>    <?= $item['item_name'] ?>
+                                                            <span style="font-weight: bolder;">( <?= $item['quantity'] ?> x <?= $item['price'] ?> ) </span>
+                                                        </li>
+
+                                                    <?php } ?>
+                                                </ul>
+                                            </td>
+                                            <td class="align-middle"><?= money($sum['total']) ?></td>
                                             <td class="align-middle">
-                                            <?= $item['created_at'] ?>
+                                                <?= $sum['created_at'] ?>
                                             </td>
                                             <td class="align-middle">
-                                                <!-- <button class="btn btn-xs px-1 py-0 btn-danger"> <i class="fe fe-trash"> </i> </button> -->
-                                                <button class="btn btn-xs px-1 py-0 btn-primary editItem" data-data='<?= json_encode($item) ?>' > <i class="fe fe-edit"> </i> </button>
+                                                <button class="btn btn-xs px-1 py-0 btn-primary"> <i class="fe fe-printer"> </i> </button>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -166,7 +202,7 @@ ob_clean();
                         <div class="col-lg-12 mb-2 ">
                             <label class="form-label">Item Name<span class="text-danger">*</span></label>
                             <input type="text" name="item_name" class="form-control py-1" placeholder="Item Name" required>
-                            <input type="hidden" name="item_id" >
+                            <input type="hidden" name="item_id">
                         </div>
                         <div class="col-lg-6 ">
                             <label class="form-label">Price<span class="text-danger">*</span></label>

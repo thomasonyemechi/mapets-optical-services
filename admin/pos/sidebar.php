@@ -29,6 +29,13 @@
                 </a>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link" href="searchsales.php">
+                    <i class="nav-icon fe fe-book me-2"></i>Today's Sales
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="../index.php">
                     <i class="nav-icon fe fe-arrow-left me-2"></i>Back To Dashboard

@@ -135,16 +135,14 @@ class Pos extends Mapets
         $sales_summary_id = mysqli_fetch_array($ft)['id'];
 
         foreach ($_POST['items'] as $item) {
-            $item_id = $item['id'];
-            $price = $item['price'];
+            $price = $item['price']; $name = $item['name'];
+            $item_id = $this->createOrFetchItem($name, $price); //$item['id'];
             $qty = $item['qty'];
             $item_total = ($price * $qty);
             $cart_total += $item_total;
-            $db->query("INSERT INTO sales(sumary_id, item_id, quantity, price) VALUES('$sales_summary_id', '$item_id', '$qty', '$price') ");
+            $db->query("INSERT INTO sales(item_name, sumary_id, item_id, quantity, price) VALUES('$name','$sales_summary_id', '$item_id', '$qty', '$price') ");
         }
-
         $db->query("UPDATE sales_summary SET total='$cart_total' WHERE id=$sales_summary_id ");
-
         echo json_encode([
             'message' => 'Sales has been registered',
             'sales_id' => $sales_summary_id,
@@ -152,6 +150,54 @@ class Pos extends Mapets
         ]);
 
     }
+
+
+    function createOrFetchItem($item, $price)
+    {
+        global $db;
+
+        $check =  $db->query("SELECT * FROM items WHERE name='$item' LIMIT 1 ");
+        if(mysqli_num_rows($check) > 0) {
+            $id = mysqli_fetch_array($check)['id'];
+            $db->query("UPDATE items SET price='$price' WHERE id='$id' ");
+            return $id;
+        }
+        $db->query("INSERT INTO items(name,price,type,description) VALUE('$item', '$price', 'product', '$item') ");
+        $fetch =  $db->query("SELECT id FROM items WHERE name='$item' LIMIT 1 ");
+        return mysqli_fetch_array($fetch)['id'];
+    }
+
+    // function checkOut()
+    // {
+    //     global $db, $report, $count;  
+
+    //     $sales_id = $_POST['sales_id'];
+    //     $user = $_POST['user_id'];
+    //     $cart_total = 0;
+
+    //     $sales_summary = $db->query("INSERT INTO sales_summary(sales_id,total,user_id) VALUES ('$sales_id', 0 , '$user'  ) ");
+    //     $ft = $db->query("SELECT id FROM sales_summary WHERE sales_id=$sales_id order by id DESC LIMIT 1 ");
+
+    //     $sales_summary_id = mysqli_fetch_array($ft)['id'];
+
+    //     foreach ($_POST['items'] as $item) {
+    //         $item_id = $item['id'];
+    //         $price = $item['price'];
+    //         $qty = $item['qty'];
+    //         $item_total = ($price * $qty);
+    //         $cart_total += $item_total;
+    //         $db->query("INSERT INTO sales(sumary_id, item_id, quantity, price) VALUES('$sales_summary_id', '$item_id', '$qty', '$price') ");
+    //     }
+
+    //     $db->query("UPDATE sales_summary SET total='$cart_total' WHERE id=$sales_summary_id ");
+
+    //     echo json_encode([
+    //         'message' => 'Sales has been registered',
+    //         'sales_id' => $sales_summary_id,
+    //         'status' => true
+    //     ]);
+
+    // }
 }
 
 

@@ -54,6 +54,17 @@ function getUser($id)
 }
 
 
+function soldItems($summary_id) {
+    global $db;
+    $sql = $db->query("SELECT * FROM sales WHERE sumary_id='$summary_id' ");
+    $data = [];
+    while($item = mysqli_fetch_array($sql)){
+        $data[] = $item;
+    }
+    return $data;
+}
+
+
 function getClient($id)
 {
     global $db;

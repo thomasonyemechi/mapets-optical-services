@@ -72,54 +72,62 @@ ob_clean();
                     <div class="col-lg-12 col-md-12 col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="fw-bold"><i class="fe fe-search"> </i> Search Product</h4>
+                                <h4 class="fw-bold"><i class="fe fe-plus-circle"> </i>Add Item</h4>
 
-                                <div class="form-group">
-                                    <input type="search" id="search" class="form-control py-1" placeholder="Type name of item here">
-                                </div>
+                                <form id="add_item" class="row">
+                                    <div class="form-group  col-md-8 ">
+                                        <input type="text" id="item_name" autofocus class="form-control py-1" placeholder="Enter name of item">
+                                    </div>
+                                    <div class="form-group  col-md-4 ">
+                                        <input type="number" id="item_price" class="form-control py-1" placeholder="Enter price">
+                                    </div>
 
-                                <div class="searchresult">
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="card mt-3 cart_list " style="display: none">
-                            <div class="card-body">
-                                <h4 class="fw-bold"> <i class="fe fe-shopping-cart"> </i> Cart</h4>
-                                <form>
-                                    <table class="table table-sm mt-2 table-striped  ">
-                                        <thead>
-                                            <tr>
-                                                <th>Item</th>
-                                                <th>Qty</th>
-                                                <th>Price</th>
-                                                <th>Ext Price</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-
-
-
-                                        </tbody>
-
-                                    </table>
-
-                                    <div class="d-flex justify-content-end ">
-                                        <div class=" ">
-                                            <!-- <button class="btn checkout btn-info py-1">Update Cart</button> -->
-                                            <button class="btn checkout btn-primary py-1">Checkout</button>
-                                        </div>
+                                    <div class="col-md-12 d-flex justify-content-end mt-3 ">
+                                        <button class="btn btn-primary btn-xs">
+                                            Add Item
+                                        </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+                    <div class="card mt-3 cart_list " style="display: none">
+                        <div class="card-body">
+                            <h4 class="fw-bold"> <i class="fe fe-shopping-cart"> </i> Cart</h4>
+                            <form>
+                                <table class="table table-sm mt-2 table-striped  ">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                            <th>Ext Price</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+
+
+                                    </tbody>
+
+                                </table>
+
+                                <div class="d-flex justify-content-end ">
+                                    <div class=" ">
+                                        <!-- <button class="btn checkout btn-info py-1">Update Cart</button> -->
+                                        <button class="btn checkout btn-primary py-1">Checkout</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
+
+    </div>
     </div>
 
 
@@ -238,6 +246,7 @@ ob_clean();
             function trno() {
                 return Math.floor(Math.random() * 10000000000000000);
             }
+
             trno = trno();
 
             function getItems() {
@@ -278,7 +287,7 @@ ob_clean();
                                 <input type="number" class="cart_qty form-control px-2 p-0" min="1" value="${item.qty}" data-index=${item.uuid} style="width:20%">
                             </td>
                             <td class="align-middle">
-                                <input type="number" class="cart_price form-control px-2 p-0" min="1" value="${item.price}" data-index=${item.uuid} style="width:30%">
+                                ${item.price}
                             </td>
                             <td class="align-middle">
                                 <h5 class="fw-bold mb-0">${total}</h5>
@@ -336,18 +345,18 @@ ob_clean();
                 displayCart()
             })
 
-            $('body').on('keyup', '.cart_price', function() {
-                val = $(this).val();
-                uuid = $(this).data('index')
-                items = getItems();
-                const index = items.findIndex(object => {
-                    return object.uuid == uuid;
-                });
-                items[index].price = val
-                console.log(uuid, index);
-                setItem(trno, items);
-                displayCart()
-            })
+            // $('body').on('keyup', '.cart_price', function() {
+            //     val = $(this).val();
+            //     uuid = $(this).data('index')
+            //     items = getItems();
+            //     const index = items.findIndex(object => {
+            //         return object.uuid == uuid;
+            //     });
+            //     items[index].price = val
+            //     console.log(uuid, index);
+            //     setItem(trno, items);
+            //     displayCart()
+            // })
 
             $('.checkout').on('click', function(e) {
                 e.preventDefault();
@@ -390,11 +399,11 @@ ob_clean();
                     var URL = loc;
                     // var win = window.open(URL, "_blank", strWindowFeatures);
                     // window.open(URL, '_blank').focus();
-                    printPage(URL)
-                    
-                    setTimeout(() => {
-                        location.reload();
-                    }, 3000);
+                    // printPage(URL)
+
+                    // setTimeout(() => {
+                    //     location.reload();
+                    // }, 3000);
 
 
 
@@ -408,22 +417,54 @@ ob_clean();
             })
 
 
-            $(document).on('click', '.search_item', function() {
-                item = $(this).data('data');
-                cart = (localStorage.getItem(trno) == null) ? [] : JSON.parse(localStorage.getItem(trno));
+            // $(document).on('click', '.search_item', function() {
+            //     item = $(this).data('data');
+            //     cart = (localStorage.getItem(trno) == null) ? [] : JSON.parse(localStorage.getItem(trno));
+            //     arr = {
+            //         uuid: Math.floor(Math.random() * 10000000),
+            //         id: item.id,
+            //         name: item.name,
+            //         price: item.price,
+            //         qty: 1
+            //     }
+            //     cart.push(arr);
+            //     $('.searchresult').html(``);
+            //     $('#search').val(``);
+            //     localStorage.setItem(trno, JSON.stringify(cart));
+            //     displayCart();
+            // });
+
+
+            $('#add_item').on('submit', function(e) {
+                e.preventDefault();
+                form = $(this);
+                item_name = $(form).find('#item_name');
+                item_price = $(form).find('#item_price');
+
+                price = item_price.val();
+                name = item_name.val();
+
+                if (price == '' || price == null || name == '' || name == null) {
+                    console.log('Item name and price is required');
+                    return;
+                }
+
                 arr = {
                     uuid: Math.floor(Math.random() * 10000000),
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
+                    name: name,
+                    price: price,
                     qty: 1
                 }
+
+                cart = (localStorage.getItem(trno) == null) ? [] : JSON.parse(localStorage.getItem(trno));
                 cart.push(arr);
-                $('.searchresult').html(``);
-                $('#search').val(``);
                 localStorage.setItem(trno, JSON.stringify(cart));
                 displayCart();
-            });
+
+                item_name.val(``)
+                item_price.val(``)
+
+            })
 
         })
     </script>

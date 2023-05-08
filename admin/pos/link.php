@@ -36,3 +36,28 @@ $me = getUser($_SESSION['mapets']);
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script type="text/javascript">
+        function closePrint() {
+            document.body.removeChild(this.__container__);
+        }
+
+        function setPrint() {
+            this.contentWindow.__container__ = this;
+            this.contentWindow.onbeforeunload = closePrint;
+            this.contentWindow.onafterprint = closePrint;
+            this.contentWindow.focus(); // Required for IE
+            this.contentWindow.print();
+        }
+
+        function printPage(sURL) {
+            var oHiddFrame = document.createElement("iframe");
+            oHiddFrame.onload = setPrint;
+            oHiddFrame.style.visibility = "hidden";
+            oHiddFrame.style.position = "fixed";
+            oHiddFrame.style.right = "0";
+            oHiddFrame.style.bottom = "0";
+            oHiddFrame.src = sURL;
+            document.body.appendChild(oHiddFrame);
+        }
+    </script>

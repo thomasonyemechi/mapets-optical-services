@@ -125,9 +125,7 @@ $sum = mysqli_fetch_array($summary);
             background: #EEE;
         }
 
-        #invoice-POS .service {
-            border-bottom: 1px solid #EEE;
-        }
+ 
 
         #invoice-POS .item {
             width: 24mm;
@@ -135,6 +133,8 @@ $sum = mysqli_fetch_array($summary);
 
         #invoice-POS .itemtext {
             font-size: .5em;
+            margin-bottom: 0px;
+            margin-top: 3px;
         }
 
         #invoice-POS #legalcopy {
@@ -144,6 +144,13 @@ $sum = mysqli_fetch_array($summary);
 
         p {
             font-weight: bold !important;
+            color: #000000 !important;
+        }
+
+        .t_item {
+            margin-top: 1px;
+            margin-bottom: 0px;
+            font-weight: 500 !important;
             color: #000000 !important;
         }
     </style>
@@ -159,13 +166,13 @@ $sum = mysqli_fetch_array($summary);
         <center id="top">
 
             <div class="info" style="margin-bottom: 10px; ">
-                <div style="display: flex; justify-content: space-between; font-size: 10px; ">
+                <div style="display: flex; justify-content: space-between; font-size: 15px; ">
                     <p><?= date('j/m/Y h:i',strtotime($sum['created_at'])); ?></p>
                     <p> <b>Sales Receipt </b> #<?= $sum['id']; ?></p>
                 </div>
                 <h2 style="margin-top: 0px;" >Mapets Optical Services</h2>
                 <p style="margin-bottom: 0px; font-size: 9px; ">
-                    Opp. Specialist Hospital, New Hospital road, 340283, Akure, Ondo State
+                    Opp. Specialist Hospital, 340283, Akure, Ondo State
                     <span style="display: block">
                         0803 576 2121
                     </span>
@@ -187,9 +194,6 @@ $sum = mysqli_fetch_array($summary);
                         <td class="Rate">
                             <h2>Price</h2>
                         </td>
-                        <td class="Rate">
-                            <h2>Ext Price</h2>
-                        </td>
                     </tr>
 
 
@@ -199,23 +203,19 @@ $sum = mysqli_fetch_array($summary);
                     while ($item = mysqli_fetch_array($sql)) {
                         $total += ($item['quantity'] * $item['price']);
                     ?>
-                        <tr class="service">
+                        <tr class="service" style="margin: 0px !important;">
                             <td class="tableitem">
-                                <p class="itemtext"><?= getItem($item['item_id'])['name'] ?></p>
+                                <p class="t_item"><?= ucwords(getItem($item['item_id'])['name']) ?></p>
                             </td>
                             <td class="tableitem">
-                                <p class="itemtext"><?= $item['quantity'] ?></p>
+                                <p class="t_item"><?= $item['quantity'] ?></p>
                             </td>
                             <td class="tableitem">
-                                <p class="itemtext"><?= money($item['price']) ?></p>
-                            </td>
-                            <td class="tableitem">
-                                <p class="itemtext"><?= money($item['quantity'] * $item['price']) ?></p>
+                                <p class="t_item"><?= money($item['quantity'] * $item['price']) ?></p>
                             </td>
                         </tr>
                     <?php } ?>
                     <tr class="tabletitle">
-                        <td></td>
                         <td></td>
                         <td class="Rate">
                             <h2>Total</h2>
